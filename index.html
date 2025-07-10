@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLC Tutor Checklist</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        :root {
+            --pbsc-blue: #003e7e;
+            --pbsc-green: #008953;
+            --pbsc-gold: #fdb913;
+            --page-bg: #f0f2f5;
+            --dark-text: #343a40;
+            --light-text: #ffffff;
+            --subtle-text: #6c757d;
+            --border-color: #dee2e6;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--page-bg);
+            color: var(--dark-text);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .checklist-container {
+            max-width: 816px; /* 8.5in * 96px/in */
+            width: 100%;
+            background-color: var(--light-text);
+            border-radius: 12px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .logo-bar {
+            background-color: var(--light-text);
+            padding: 0.75rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-bar img {
+            max-width: 250px;
+        }
+
+        .title-banner {
+            background: linear-gradient(135deg, var(--pbsc-blue) 0%, #0058a2 100%);
+            padding: 1rem 1.5rem;
+            text-align: center;
+            border-bottom: 5px solid var(--pbsc-gold);
+        }
+
+        .title-banner h1 {
+            color: var(--light-text);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .title-banner .subtitle {
+            color: var(--light-text);
+            opacity: 0.9;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .main-content {
+            padding: 1.5rem;
+        }
+
+        .checklist-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .icon-frame {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--pbsc-green);
+            color: var(--light-text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        .section-title h2 {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--pbsc-blue);
+        }
+        
+        .section-title .divider {
+            height: 3px;
+            width: 40px;
+            background-color: var(--pbsc-green);
+            border-radius: 2px;
+            margin-top: 0.2rem;
+        }
+
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .checklist li::before {
+            content: '\f0c8'; /* Font Awesome square icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 400; /* Use regular style for unfilled box */
+            font-size: 1.2rem;
+            color: var(--pbsc-green);
+            margin-right: 0.75rem;
+            margin-top: 0.1rem; /* Align with first line of text */
+        }
+
+        .item-text strong {
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .item-text .description {
+            font-size: 0.85rem;
+            color: var(--subtle-text);
+            display: block;
+            padding-left: 0.25rem;
+        }
+
+        .how-to-button-container {
+            text-align: center;
+            padding: 1rem 1.5rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+            background-color: #f8f9fa;
+        }
+        
+        .how-to-button {
+            display: inline-block;
+            background-color: var(--pbsc-gold);
+            color: var(--dark-text);
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(253, 185, 19, 0.3);
+        }
+
+        .how-to-button:hover {
+            background-color: #eab012;
+            box-shadow: 0 6px 20px rgba(253, 185, 19, 0.4);
+            transform: translateY(-2px);
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background-color: var(--light-text);
+            }
+            .checklist-container {
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+            .how-to-button-container {
+                display: none;
+            }
+            .title-banner, .icon-frame {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .title-banner h1, .title-banner .subtitle {
+                color: var(--light-text) !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="checklist-container">
+        <header>
+            <div class="logo-bar">
+                 <img src="https://www.palmbeachstate.edu/_resources/images/logo.jpg" alt="Palm Beach State College Logo">
+            </div>
+            <div class="title-banner">
+                <h1>SLC Tutor Checklist</h1>
+                <p class="subtitle">A Framework for Effective Tutoring</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+
+            <section class="checklist-section">
+                <div class="section-header">
+                    <div class="icon-frame"><i class="fas fa-briefcase"></i></div>
+                    <div class="section-title"><h2>1. Preparation</h2><div class="divider"></div></div>
+                </div>
+                <ul class="checklist">
+                    <li><div class="item-text"><strong>Review previous appointments & comments.</strong> <span class="description">Provides context and helps personalize the session.</span></div></li>
+                    <li><div class="item-text"><strong>Gather materials.</strong> <span class="description">Ensures a smooth and efficient session start (textbook, calculator, etc.).</span></div></li>
+                </ul>
+            </section>
+            
+            <section class="checklist-section">
+                <div class="section-header">
+                    <div class="icon-frame"><i class="fas fa-handshake"></i></div>
+                    <div class="section-title"><h2>2. Initial Contact</h2><div class="divider"></div></div>
+                </div>
+                <ul class="checklist">
+                    <li><div class="item-text"><strong>Welcome the student with a warm smile and use their name.</strong> <span class="description">Sets a positive, professional tone for the entire session.</span></div></li>
+                    <li><div class="item-text"><strong>Create a safe learning environment where it's okay to make mistakes.</strong> <span class="description">Reduces student anxiety and encourages active participation.</span></div></li>
+                </ul>
+            </section>
+
+            <section class="checklist-section">
+                <div class="section-header">
+                    <div class="icon-frame"><i class="fas fa-map-signs"></i></div>
+                    <div class="section-title"><h2>3. Assessment & Goal Setting</h2><div class="divider"></div></div>
+                </div>
+                <ul class="checklist">
+                    <li><div class="item-text"><strong>Ask for the assignment instructions.</strong> <span class="description">Ensures the session is aligned with the professor's expectations.</span></div></li>
+                    <li><div class="item-text"><strong>Use open-ended questions to check for understanding.</strong> <span class="description">Helps accurately diagnose student needs and their true starting point.</span></div></li>
+                    <li><div class="item-text"><strong>Set realistic and collaborative goals for the session.</strong> <span class="description">Manages expectations and provides a clear focus for the appointment.</span></div></li>
+                </ul>
+            </section>
+
+            <section class="checklist-section">
+                <div class="section-header">
+                    <div class="icon-frame"><i class="fas fa-layer-group"></i></div>
+                    <div class="section-title"><h2>4. Instruction & Guidance</h2><div class="divider"></div></div>
+                </div>
+                <ul class="checklist">
+                    <li><div class="item-text"><strong>Use scaffolding: start with a known concept to build confidence.</strong> <span class="description">Address foundational gaps before tackling more complex topics.</span></div></li>
+                    <li><div class="item-text"><strong>Use the Socratic method and have the student lead.</strong> <span class="description">Promotes critical thinking and independence by letting the student "hold the pen."</span></div></li>
+                </ul>
+            </section>
+            
+            <section class="checklist-section">
+                 <div class="section-header">
+                    <div class="icon-frame"><i class="fas fa-lightbulb"></i></div>
+                    <div class="section-title"><h2>5. Practice & Feedback</h2><div class="divider"></div></a></div>
+                </div>
+                <ul class="checklist">
+                     <li><div class="item-text"><strong>Ask them to explain each step as they work.</strong> <span class="description">Verifies their thought process, not just the correctness of the final answer.</span></div></li>
+                     <li><div class="item-text"><strong>Verify understanding with a similar problem.</strong> <span class="description">Confirms the student can apply the concept independently.</span></div></li>
+                </ul>
+            </section>
+            
+            <section class="checklist-section">
+                <div class="section-header">
+                    <div class="icon-frame"><i class="fas fa-flag-checkered"></i></div>
+                    <div class="section-title"><h2>6. Concluding the Session</h2><div class="divider"></div></div>
+                </div>
+                <ul class="checklist">
+                    <li><div class="item-text"><strong>Recap goals and what was accomplished.</strong> <span class="description">Reinforces learning and boosts the student's sense of progress.</span></div></li>
+                    <li><div class="item-text"><strong>Discuss next steps for independent study.</strong> <span class="description">Provides clear, actionable direction for the student to continue learning.</span></div></li>
+                    <li><div class="item-text"><strong>Promote word-of-mouth marketing.</strong> <span class="description">Encourage satisfied students to refer their classmates.</span></div></li>
+                </ul>
+            </section>
+
+            <section class="checklist-section">
+                <div class="section-header">
+                    <div class="icon-frame"><i class="fas fa-file-signature"></i></div>
+                    <div class="section-title"><h2>7. Post-Session Tasks</h2><div class="divider"></div></div>
+                </div>
+                <ul class="checklist">
+                    <li><div class="item-text"><strong>Send proof of attendance if needed.</strong><span class="description"></span></div></li>
+                    <li><div class="item-text"><strong>Write a detailed, professional report.</strong> <span class="description">Provides a valuable record for instructors and future tutors.</span></div></li>
+                    <li><div class="item-text"><strong>Take your scheduled breaks.</strong> <span class="description">Prevents burnout and ensures you are ready for the next student.</span></div></li>
+                </ul>
+            </section>
+        </main>
+        
+        <div class="how-to-button-container">
+            <!-- This link can be updated to your actual YouTube video URL -->
+            <a href="#" class="how-to-button"><i class="fab fa-youtube"></i> Watch GitHub "How-To" Video</a>
+        </div>
+    </div>
+
+</body>
+</html>
