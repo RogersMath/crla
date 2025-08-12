@@ -227,21 +227,32 @@
         @media print {
             body {
                 padding: 0;
+                margin: 0;
                 background-color: var(--light-text);
+                min-height: 0; /* Remove screen-specific height */
             }
             .page-container {
                 box-shadow: none;
                 border: none;
                 width: 100%;
                 height: 100%;
-                aspect-ratio: unset;
+                max-width: 100%;    /* Allow it to fill the page */
+                aspect-ratio: unset; /* Remove fixed aspect ratio */
             }
-            .youtube-card { display: none; }
+            .content-grid {
+                /* This is the key fix: */
+                grid-template-columns: 1fr 1fr; 
+                padding: 1.5rem; /* Slightly reduce padding for print */
+                gap: 1.5rem;     /* Slightly reduce gap for print */
+                background-color: var(--light-text);
+            }
+            .youtube-card { 
+                display: none; /* This was correct, keep it */
+            }
             .title-banner, .icon-frame {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
-            .content-grid { background-color: var(--light-text); }
         }
     </style>
 </head>
