@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SLC Tutor Checklist - Printable</title>
+    <title>SLC Tutor Checklist - 5-Step Framework</title>
     <!-- Font Awesome CDN for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
@@ -26,16 +26,15 @@
             color: var(--dark-text);
             display: flex;
             justify-content: center;
-            align-items: center; /* Center vertically */
+            align-items: center;
             padding: 2rem;
             min-height: 100vh;
         }
 
         .page-container {
-            /* WIDENED the container for a better screen feel */
-            max-width: 950px; 
+            max-width: 950px;
             width: 100%;
-            aspect-ratio: 8.5 / 11; /* Lock to 8.5 x 11 proportions */
+            aspect-ratio: 8.5 / 11;
             background-color: var(--light-text);
             box-shadow: 0 10px 60px rgba(0, 0, 0, 0.2);
             border: 1px solid #d1d9e2;
@@ -78,7 +77,6 @@
         .content-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            /* INCREASED gaps and padding for more breathing room */
             gap: 2rem;
             padding: 2rem;
             background-color: #f8f9fa;
@@ -97,6 +95,8 @@
             padding: 1.5rem;
             border: 1px solid var(--border-color);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
         }
 
         .section-header {
@@ -138,14 +138,15 @@
             list-style: none;
             padding-left: 0;
             margin: 0;
+            margin-top: 1rem; /* Added margin for spacing */
         }
 
         .checklist li {
             display: flex;
             align-items: flex-start;
-            margin-bottom: .5rem;
-            font-size: .8rem; /* INCREASED font size slightly */
+            margin-bottom: .75rem; /* Increased spacing */
         }
+        
         .checklist li:last-child {
             margin-bottom: 0;
         }
@@ -172,52 +173,11 @@
             color: var(--subtle-text);
             line-height: 1.4;
         }
-
-        .youtube-card {
-            background: rgba(253, 185, 19, 0.1);
-            border: 1px solid rgba(253, 185, 19, 0.3);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            flex-grow: 1;
-        }
-
-        .youtube-card .icon-frame {
-            background-color: var(--pbsc-gold);
-            color: var(--dark-text);
-            margin-bottom: 1rem;
-        }
-
-        .youtube-card p {
-            font-weight: 500;
-            color: #b98509;
-            margin: 0 0 1.25rem 0;
-            font-size: 1rem;
-        }
         
-        .youtube-button {
-            display: inline-block;
-            background-color: var(--pbsc-gold);
-            color: var(--dark-text);
-            font-size: 1.1rem;
-            font-weight: 600;
-            padding: 0.85rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: 1px solid #eab012;
+        .youtube-card { /* Kept for layout consistency */
+            display: none; /* Hidden as it's not part of the core checklist */
         }
 
-        .youtube-button:hover {
-            background-color: #eab012;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        
         @media (max-width: 768px) {
             body { padding: 1rem; }
             .page-container { aspect-ratio: unset; }
@@ -225,34 +185,11 @@
         }
 
         @media print {
-            body {
-                padding: 0;
-                margin: 0;
-                background-color: var(--light-text);
-                min-height: 0; /* Remove screen-specific height */
-            }
-            .page-container {
-                box-shadow: none;
-                border: none;
-                width: 100%;
-                height: 100%;
-                max-width: 100%;    /* Allow it to fill the page */
-                aspect-ratio: unset; /* Remove fixed aspect ratio */
-            }
-            .content-grid {
-                /* This is the key fix: */
-                grid-template-columns: 1fr 1fr; 
-                padding: 1.5rem; /* Slightly reduce padding for print */
-                gap: 1.5rem;     /* Slightly reduce gap for print */
-                background-color: var(--light-text);
-            }
-            .youtube-card { 
-                display: none; /* This was correct, keep it */
-            }
-            .title-banner, .icon-frame {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
+            body { padding: 0; margin: 0; background-color: var(--light-text); min-height: 0; }
+            .page-container { box-shadow: none; border: none; width: 100%; height: 100%; max-width: 100%; aspect-ratio: unset; }
+            .content-grid { grid-template-columns: 1fr 1fr; padding: 1.5rem; gap: 1.5rem; background-color: var(--light-text); }
+            .youtube-card { display: none; }
+            .title-banner, .icon-frame { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
     </style>
 </head>
@@ -265,7 +202,7 @@
             </div>
             <div class="title-banner">
                 <h1>SLC Tutor Checklist</h1>
-                <p class="subtitle">A Framework for Effective Tutoring</p>
+                <p class="subtitle">A 5-Step Framework for Effective Tutoring</p>
             </div>
         </header>
 
@@ -285,22 +222,12 @@
                 
                 <section class="checklist-section">
                     <div class="section-header">
-                        <div class="icon-frame"><i class="fas fa-handshake"></i></div>
-                        <div class="section-title"><h2>2. Initial Contact</h2><div class="divider"></div></div>
+                        <div class="icon-frame"><i class="fas fa-handshake-angle"></i></div>
+                        <div class="section-title"><h2>2. Rapport & Direction</h2><div class="divider"></div></div>
                     </div>
                     <ul class="checklist">
-                        <li><div class="item-text"><strong>Welcome the student with a warm smile and use their name.</strong> <span class="description">Sets a positive, professional tone for the entire session.</span></div></li>
-                        <li><div class="item-text"><strong>Create a safe learning environment where it's okay to make mistakes.</strong> <span class="description">Reduces student anxiety and encourages active participation.</span></div></li>
-                    </ul>
-                </section>
-
-                <section class="checklist-section">
-                    <div class="section-header">
-                        <div class="icon-frame"><i class="fas fa-map-signs"></i></div>
-                        <div class="section-title"><h2>3. Assessment & Goal Setting</h2><div class="divider"></div></div>
-                    </div>
-                    <ul class="checklist">
-                        <li><div class="item-text"><strong>Ask for the assignment instructions.</strong> <span class="description">Ensures the session is aligned with the professor's expectations.</span></div></li>
+                        <li><div class="item-text"><strong>Welcome the student warmly and use their name.</strong> <span class="description">Sets a positive, professional tone for the entire session.</span></div></li>
+                        <li><div class="item-text"><strong>Ask for assignment instructions.</strong> <span class="description">Ensures the session is aligned with the professor's expectations.</span></div></li>
                         <li><div class="item-text"><strong>Use open-ended questions to check for understanding.</strong> <span class="description">Helps accurately diagnose student needs and their true starting point.</span></div></li>
                         <li><div class="item-text"><strong>Set realistic and collaborative goals for the session.</strong> <span class="description">Manages expectations and provides a clear focus for the appointment.</span></div></li>
                     </ul>
@@ -308,32 +235,23 @@
 
                  <section class="checklist-section">
                     <div class="section-header">
-                        <div class="icon-frame"><i class="fas fa-layer-group"></i></div>
-                        <div class="section-title"><h2>4. Instruction & Guidance</h2><div class="divider"></div></div>
+                        <div class="icon-frame"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <div class="section-title"><h2>3. Guided Learning</h2><div class="divider"></div></div>
                     </div>
                     <ul class="checklist">
                         <li><div class="item-text"><strong>Use scaffolding: start with a known concept to build confidence.</strong> <span class="description">Address foundational gaps before tackling more complex topics.</span></div></li>
-                        <li><div class="item-text"><strong>Use the Socratic method and have the student lead.</strong> <span class="description">Promotes critical thinking and independence by letting the student "hold the pen."</span></div></li>
+                        <li><div class="item-text"><strong>Use the Socratic method and have the student lead.</strong> <span class="description">Promotes critical thinking by letting the student "hold the pen."</span></div></li>
+                        <li><div class="item-text"><strong>Ask them to explain each step as they work.</strong> <span class="description">Verifies their thought process, not just the correctness of the final answer.</span></div></li>
+                         <li><div class="item-text"><strong>Verify understanding with a similar problem.</strong> <span class="description">Confirms the student can apply the concept independently.</span></div></li>
                     </ul>
                 </section>
             </div>
 
             <div class="grid-column">
                 <section class="checklist-section">
-                     <div class="section-header">
-                        <div class="icon-frame"><i class="fas fa-lightbulb"></i></div>
-                        <div class="section-title"><h2>5. Practice & Feedback</h2><div class="divider"></div></a></div>
-                    </div>
-                    <ul class="checklist">
-                         <li><div class="item-text"><strong>Ask them to explain each step as they work.</strong> <span class="description">Verifies their thought process, not just the correctness of the final answer.</span></div></li>
-                         <li><div class="item-text"><strong>Verify understanding with a similar problem.</strong> <span class="description">Confirms the student can apply the concept independently.</span></div></li>
-                    </ul>
-                </section>
-                
-                <section class="checklist-section">
                     <div class="section-header">
                         <div class="icon-frame"><i class="fas fa-flag-checkered"></i></div>
-                        <div class="section-title"><h2>6. Concluding the Session</h2><div class="divider"></div></div>
+                        <div class="section-title"><h2>4. Concluding the Session</h2><div class="divider"></div></div>
                     </div>
                     <ul class="checklist">
                         <li><div class="item-text"><strong>Recap goals and what was accomplished.</strong> <span class="description">Reinforces learning and boosts the student's sense of progress.</span></div></li>
@@ -345,7 +263,7 @@
                 <section class="checklist-section">
                     <div class="section-header">
                         <div class="icon-frame"><i class="fas fa-file-signature"></i></div>
-                        <div class="section-title"><h2>7. Post-Session Tasks</h2><div class="divider"></div></div>
+                        <div class="section-title"><h2>5. Post-Session Tasks</h2><div class="divider"></div></div>
                     </div>
                     <ul class="checklist">
                         <li><div class="item-text"><strong>Send proof of attendance if needed.</strong></div></li>
@@ -353,12 +271,9 @@
                         <li><div class="item-text"><strong>Take your scheduled breaks.</strong> <span class="description">Prevents burnout and ensures you are ready for the next student.</span></div></li>
                     </ul>
                 </section>
-
-                <div class="youtube-card">
-                    <div class="icon-frame"><i class="fab fa-github"></i></div>
-                    <p>Learn how to publish this page to your own GitHub account!</p>
-                    <a href="#" class="youtube-button"><i class="fab fa-youtube"></i> Watch "How-To" Video</a>
-                </div>
+                
+                <!-- This section is just a placeholder to balance the columns if needed -->
+                <div class="youtube-card" style="visibility: hidden;"></div>
             </div>
         </main>
     </div>
