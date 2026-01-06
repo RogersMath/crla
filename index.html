@@ -12,12 +12,33 @@
         :root {
             --pbsc-blue: #003e7e;
             --pbsc-green: #008953;
-            --pbsc-gold: #fdb913;
+            --pbsc-gold: #c68c00; /* Darkened from #fdb913 for better contrast */
             --page-bg: #e9ebee;
-            --dark-text: #343a40;
+            --dark-text: #000000; /* Changed from #343a40 for AAA contrast */
             --light-text: #ffffff;
-            --subtle-text: #6c757d;
+            --subtle-text: #595959; /* Changed from #6c757d for AAA (7:1) contrast */
             --border-color: #e0e5eb;
+            --focus-color: #0056b3;
+        }
+
+        /* Skip to main content link for keyboard navigation */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--pbsc-blue);
+            color: var(--light-text);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 9999;
+            border-radius: 0 0 4px 0;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 4px solid var(--pbsc-gold);
+            outline-offset: 2px;
         }
 
         body {
@@ -26,16 +47,16 @@
             color: var(--dark-text);
             display: flex;
             justify-content: center;
-            align-items: center; /* Center vertically */
+            align-items: center;
             padding: 2rem;
             min-height: 100vh;
+            margin: 0;
         }
 
         .page-container {
-            /* WIDENED the container for a better screen feel */
             max-width: 950px; 
             width: 100%;
-            aspect-ratio: 8.5 / 11; /* Lock to 8.5 x 11 proportions */
+            aspect-ratio: 8.5 / 11;
             background-color: var(--light-text);
             box-shadow: 0 10px 60px rgba(0, 0, 0, 0.2);
             border: 1px solid #d1d9e2;
@@ -51,6 +72,9 @@
 
         .logo-bar img {
             max-height: 50px;
+            /* Ensure image has proper dimensions */
+            height: auto;
+            width: auto;
         }
 
         .title-banner {
@@ -65,11 +89,12 @@
             font-size: 2rem;
             font-weight: 700;
             margin: 0;
+            line-height: 1.2;
         }
 
         .title-banner .subtitle {
             color: var(--light-text);
-            opacity: 0.9;
+            opacity: 0.95;
             font-size: 1.2rem;
             font-weight: 400;
             margin-top: 0.2rem;
@@ -78,7 +103,6 @@
         .content-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            /* INCREASED gaps and padding for more breathing room */
             gap: 2rem;
             padding: 2rem;
             background-color: #f8f9fa;
@@ -124,6 +148,7 @@
             font-size: 1.2rem;
             font-weight: 700;
             color: var(--pbsc-blue);
+            line-height: 1.3;
         }
         
         .section-title .divider {
@@ -144,8 +169,10 @@
             display: flex;
             align-items: flex-start;
             margin-bottom: .5rem;
-            font-size: .8rem; /* INCREASED font size slightly */
+            font-size: .8rem;
+            line-height: 1.5;
         }
+        
         .checklist li:last-child {
             margin-bottom: 0;
         }
@@ -158,24 +185,26 @@
             color: var(--pbsc-green);
             margin-right: 1rem;
             margin-top: 0.15rem;
+            /* Hide from screen readers - decorative only */
+            speak: never;
         }
 
         .item-text strong {
             font-weight: 600;
             color: var(--dark-text);
             display: block;
-            line-height: 1.3;
+            line-height: 1.4;
         }
 
         .item-text .description {
             font-size: 0.85rem;
             color: var(--subtle-text);
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         .youtube-card {
-            background: rgba(253, 185, 19, 0.1);
-            border: 1px solid rgba(253, 185, 19, 0.3);
+            background: rgba(198, 140, 0, 0.08); /* Updated with new gold color */
+            border: 2px solid var(--pbsc-gold);
             border-radius: 12px;
             padding: 1.5rem;
             text-align: center;
@@ -194,9 +223,10 @@
 
         .youtube-card p {
             font-weight: 500;
-            color: #b98509;
+            color: var(--dark-text); /* Changed for AAA contrast */
             margin: 0 0 1.25rem 0;
             font-size: 1rem;
+            line-height: 1.5;
         }
         
         .youtube-button {
@@ -208,20 +238,78 @@
             padding: 0.85rem 2rem;
             border-radius: 50px;
             text-decoration: none;
-            transition: all 0.3s;
-            border: 1px solid #eab012;
+            transition: all 0.3s ease;
+            border: 2px solid var(--pbsc-blue);
+            /* Ensure minimum touch target size */
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
         .youtube-button:hover {
-            background-color: #eab012;
+            background-color: var(--pbsc-blue);
+            color: var(--light-text);
             transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* CRITICAL: Focus indicators for keyboard navigation */
+        .youtube-button:focus-visible {
+            outline: 4px solid var(--focus-color);
+            outline-offset: 4px;
+            background-color: var(--pbsc-blue);
+            color: var(--light-text);
+        }
+
+        /* Ensure all links have focus indicators */
+        a:focus-visible {
+            outline: 4px solid var(--focus-color);
+            outline-offset: 4px;
         }
         
         @media (max-width: 768px) {
             body { padding: 1rem; }
             .page-container { aspect-ratio: unset; }
-            .content-grid { grid-template-columns: 1fr; }
+            .content-grid { 
+                grid-template-columns: 1fr; 
+                padding: 1.5rem;
+            }
+            .title-banner h1 {
+                font-size: 1.5rem;
+            }
+            .title-banner .subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        /* Reduced motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .checklist-section,
+            .youtube-card {
+                border-width: 3px;
+            }
+            
+            .youtube-button {
+                border-width: 3px;
+            }
+            
+            .youtube-button:focus-visible,
+            a:focus-visible {
+                outline-width: 5px;
+            }
         }
 
         @media print {
@@ -229,26 +317,33 @@
                 padding: 0;
                 margin: 0;
                 background-color: var(--light-text);
-                min-height: 0; /* Remove screen-specific height */
+                min-height: 0;
             }
+            
+            .skip-link {
+                display: none;
+            }
+            
             .page-container {
                 box-shadow: none;
                 border: none;
                 width: 100%;
                 height: 100%;
-                max-width: 100%;    /* Allow it to fill the page */
-                aspect-ratio: unset; /* Remove fixed aspect ratio */
+                max-width: 100%;
+                aspect-ratio: unset;
             }
+            
             .content-grid {
-                /* This is the key fix: */
                 grid-template-columns: 1fr 1fr; 
-                padding: 1.5rem; /* Slightly reduce padding for print */
-                gap: 1.5rem;     /* Slightly reduce gap for print */
+                padding: 1.5rem;
+                gap: 1.5rem;
                 background-color: var(--light-text);
             }
+            
             .youtube-card { 
-                display: none; /* This was correct, keep it */
+                display: none;
             }
+            
             .title-banner, .icon-frame {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
@@ -257,9 +352,11 @@
     </style>
 </head>
 <body>
+    <!-- Skip to main content for keyboard users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <div class="page-container">
-        <header>
+        <header role="banner">
             <div class="logo-bar">
                  <img src="https://www.palmbeachstate.edu/_resources/images/logo.jpg" alt="Palm Beach State College Logo">
             </div>
@@ -269,13 +366,16 @@
             </div>
         </header>
 
-        <main class="content-grid">
+        <main class="content-grid" id="main-content" role="main">
             
             <div class="grid-column">
-                <section class="checklist-section">
+                <section class="checklist-section" aria-labelledby="section-preparation">
                     <div class="section-header">
-                        <div class="icon-frame"><i class="fas fa-briefcase"></i></div>
-                        <div class="section-title"><h2>1. Preparation</h2><div class="divider"></div></div>
+                        <div class="icon-frame" aria-hidden="true"><i class="fas fa-briefcase" aria-hidden="true"></i></div>
+                        <div class="section-title">
+                            <h2 id="section-preparation">1. Preparation</h2>
+                            <div class="divider" aria-hidden="true"></div>
+                        </div>
                     </div>
                     <ul class="checklist">
                         <li><div class="item-text"><strong>Review previous appointments & comments.</strong> <span class="description">Provides context and helps personalize the session.</span></div></li>
@@ -283,10 +383,13 @@
                     </ul>
                 </section>
                 
-                <section class="checklist-section">
+                <section class="checklist-section" aria-labelledby="section-contact">
                     <div class="section-header">
-                        <div class="icon-frame"><i class="fas fa-handshake"></i></div>
-                        <div class="section-title"><h2>2. Initial Contact</h2><div class="divider"></div></div>
+                        <div class="icon-frame" aria-hidden="true"><i class="fas fa-handshake" aria-hidden="true"></i></div>
+                        <div class="section-title">
+                            <h2 id="section-contact">2. Initial Contact</h2>
+                            <div class="divider" aria-hidden="true"></div>
+                        </div>
                     </div>
                     <ul class="checklist">
                         <li><div class="item-text"><strong>Welcome the student with a warm smile and use their name.</strong> <span class="description">Sets a positive, professional tone for the entire session.</span></div></li>
@@ -294,10 +397,13 @@
                     </ul>
                 </section>
 
-                <section class="checklist-section">
+                <section class="checklist-section" aria-labelledby="section-assessment">
                     <div class="section-header">
-                        <div class="icon-frame"><i class="fas fa-map-signs"></i></div>
-                        <div class="section-title"><h2>3. Assessment & Goal Setting</h2><div class="divider"></div></div>
+                        <div class="icon-frame" aria-hidden="true"><i class="fas fa-map-signs" aria-hidden="true"></i></div>
+                        <div class="section-title">
+                            <h2 id="section-assessment">3. Assessment & Goal Setting</h2>
+                            <div class="divider" aria-hidden="true"></div>
+                        </div>
                     </div>
                     <ul class="checklist">
                         <li><div class="item-text"><strong>Ask for the assignment instructions.</strong> <span class="description">Ensures the session is aligned with the professor's expectations.</span></div></li>
@@ -306,10 +412,13 @@
                     </ul>
                 </section>
 
-                 <section class="checklist-section">
+                 <section class="checklist-section" aria-labelledby="section-instruction">
                     <div class="section-header">
-                        <div class="icon-frame"><i class="fas fa-layer-group"></i></div>
-                        <div class="section-title"><h2>4. Instruction & Guidance</h2><div class="divider"></div></div>
+                        <div class="icon-frame" aria-hidden="true"><i class="fas fa-layer-group" aria-hidden="true"></i></div>
+                        <div class="section-title">
+                            <h2 id="section-instruction">4. Instruction & Guidance</h2>
+                            <div class="divider" aria-hidden="true"></div>
+                        </div>
                     </div>
                     <ul class="checklist">
                         <li><div class="item-text"><strong>Use scaffolding: start with a known concept to build confidence.</strong> <span class="description">Address foundational gaps before tackling more complex topics.</span></div></li>
@@ -319,10 +428,13 @@
             </div>
 
             <div class="grid-column">
-                <section class="checklist-section">
+                <section class="checklist-section" aria-labelledby="section-practice">
                      <div class="section-header">
-                        <div class="icon-frame"><i class="fas fa-lightbulb"></i></div>
-                        <div class="section-title"><h2>5. Practice & Feedback</h2><div class="divider"></div></a></div>
+                        <div class="icon-frame" aria-hidden="true"><i class="fas fa-lightbulb" aria-hidden="true"></i></div>
+                        <div class="section-title">
+                            <h2 id="section-practice">5. Practice & Feedback</h2>
+                            <div class="divider" aria-hidden="true"></div>
+                        </div>
                     </div>
                     <ul class="checklist">
                          <li><div class="item-text"><strong>Ask them to explain each step as they work.</strong> <span class="description">Verifies their thought process, not just the correctness of the final answer.</span></div></li>
@@ -330,10 +442,13 @@
                     </ul>
                 </section>
                 
-                <section class="checklist-section">
+                <section class="checklist-section" aria-labelledby="section-concluding">
                     <div class="section-header">
-                        <div class="icon-frame"><i class="fas fa-flag-checkered"></i></div>
-                        <div class="section-title"><h2>6. Concluding the Session</h2><div class="divider"></div></div>
+                        <div class="icon-frame" aria-hidden="true"><i class="fas fa-flag-checkered" aria-hidden="true"></i></div>
+                        <div class="section-title">
+                            <h2 id="section-concluding">6. Concluding the Session</h2>
+                            <div class="divider" aria-hidden="true"></div>
+                        </div>
                     </div>
                     <ul class="checklist">
                         <li><div class="item-text"><strong>Recap goals and what was accomplished.</strong> <span class="description">Reinforces learning and boosts the student's sense of progress.</span></div></li>
@@ -342,10 +457,13 @@
                     </ul>
                 </section>
 
-                <section class="checklist-section">
+                <section class="checklist-section" aria-labelledby="section-postsession">
                     <div class="section-header">
-                        <div class="icon-frame"><i class="fas fa-file-signature"></i></div>
-                        <div class="section-title"><h2>7. Post-Session Tasks</h2><div class="divider"></div></div>
+                        <div class="icon-frame" aria-hidden="true"><i class="fas fa-file-signature" aria-hidden="true"></i></div>
+                        <div class="section-title">
+                            <h2 id="section-postsession">7. Post-Session Tasks</h2>
+                            <div class="divider" aria-hidden="true"></div>
+                        </div>
                     </div>
                     <ul class="checklist">
                         <li><div class="item-text"><strong>Send proof of attendance if needed.</strong></div></li>
@@ -354,11 +472,17 @@
                     </ul>
                 </section>
 
-                <div class="youtube-card">
-                    <div class="icon-frame"><i class="fab fa-github"></i></div>
-                    <p>Learn how to publish this page to your own GitHub account!</p>
-                    <a href="https://youtu.be/eHObxVOaH_E" class="youtube-button"><i class="fab fa-youtube"></i> Watch "How-To" Video</a>
-                </div>
+                <aside class="youtube-card" aria-labelledby="github-tutorial">
+                    <div class="icon-frame" aria-hidden="true"><i class="fab fa-github" aria-hidden="true"></i></div>
+                    <p id="github-tutorial">Learn how to publish this page to your own GitHub account!</p>
+                    <a href="https://youtu.be/eHObxVOaH_E" 
+                       class="youtube-button" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       aria-label="Watch GitHub publishing tutorial on YouTube (opens in new window)">
+                        <i class="fab fa-youtube" aria-hidden="true"></i> Watch Tutorial Video
+                    </a>
+                </aside>
             </div>
         </main>
     </div>
